@@ -21,7 +21,7 @@ function MyForm() {
     points +=parseFloat(inputs.walkkm)*100*5/8;
     points +=parseFloat(inputs.cyclemiles)*30;
     points +=parseFloat(inputs.cyclekm)*30*5/8;
-    points +=parseInt(inputs.activitymins)*3;
+    points +=parseInt(inputs.activitymins)*5;
     //remove double counted steps later.
     const landmiles=parseFloat(inputs.runmiles)+parseFloat(inputs.walkmiles)+(parseFloat(inputs.runkm)+parseFloat(inputs.walkkm))*5/8;
     var calcSteps = inputs.steps;
