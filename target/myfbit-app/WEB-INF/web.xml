@@ -1,0 +1,26 @@
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+              http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+              version="2.4">
+
+      <display-name>create-react-app-servlet</display-name>
+<filter>
+        <description>OpenAM Tomcat Policy Agent Filter</description>
+        <filter-name>Agent</filter-name>
+        <filter-class>com.sun.identity.agents.filter.AmAgentFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>Agent</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+        <dispatcher>ERROR</dispatcher>
+    </filter-mapping>
+      <error-page>
+        <error-code>404</error-code>
+        <location>/index.html</location>
+      </error-page>
+
+    </web-app>

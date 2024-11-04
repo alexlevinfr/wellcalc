@@ -2,6 +2,13 @@
 
 # dependencies
 /node_modules
+bower_components
+
+*.sublime*
+psd
+thumb
+sketch
+
 /.pnp
 .pnp.js
 
@@ -10,6 +17,10 @@
 
 # production
 /build
+*.log
+logs
+**/*.backup.*
+**/*.back.*
 
 # misc
 .DS_Store
