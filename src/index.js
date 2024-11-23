@@ -14,11 +14,11 @@ function MyForm() {
                                         });
 
   function calcPoints(inputs) {
-    var landmiles=parseFloat(inputs.runmiles)*100;
-    landmiles +=parseFloat(inputs.runkm)*100*5/8;
+    var landmiles=parseFloat(inputs.runmiles);
+    landmiles +=parseFloat(inputs.runkm)*5/8;
 
-    landmiles +=parseFloat(inputs.walkmiles)*100;
-    landmiles +=parseFloat(inputs.walkkm)*100*5/8;
+    landmiles +=parseFloat(inputs.walkmiles);
+    landmiles +=parseFloat(inputs.walkkm)*5/8;
     var points =parseFloat(inputs.cyclemiles)*30;
     points +=parseFloat(inputs.cyclekm)*30*5/8;
     points +=parseInt(inputs.activitymins)*5;
