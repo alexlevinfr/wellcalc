@@ -14,16 +14,15 @@ function MyForm() {
                                         });
 
   function calcPoints(inputs) {
-    var points=parseFloat(inputs.runmiles)*100;
-    points = points + parseFloat(inputs.runkm)*100*5/8;
+    var landmiles=parseFloat(inputs.runmiles)*100;
+    landmiles +=parseFloat(inputs.runkm)*100*5/8;
 
-    points +=parseFloat(inputs.walkmiles)*100;
-    points +=parseFloat(inputs.walkkm)*100*5/8;
-    points +=parseFloat(inputs.cyclemiles)*30;
+    landmiles +=parseFloat(inputs.walkmiles)*100;
+    landmiles +=parseFloat(inputs.walkkm)*100*5/8;
+    var points =parseFloat(inputs.cyclemiles)*30;
     points +=parseFloat(inputs.cyclekm)*30*5/8;
     points +=parseInt(inputs.activitymins)*5;
-    //remove double counted steps later.
-    const landmiles=parseFloat(inputs.runmiles)+parseFloat(inputs.walkmiles)+(parseFloat(inputs.runkm)+parseFloat(inputs.walkkm))*5/8;
+    
     var calcSteps = parseInt(inputs.steps);
     var landSteps = landmiles*2000;
     if (landSteps>calcSteps) {
