@@ -50,7 +50,7 @@ function MyForm() {
 
   return (
     <div className="container">
-    <h2>Simple wellable calculator. Input your activity, see the wellable points.</h2>
+    <h2>Simple wellable calculator v0.1. Input your activity, see the wellable points.</h2>
     <form onSubmit={handleSubmit}>
       <p>
       <label>Number of miles run:
