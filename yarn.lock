@@ -8359,10 +8359,10 @@ rollup-plugin-terser@^7.0.0:
     serialize-javascript "^4.0.0"
     terser "^5.0.0"
 
-rollup@^2.43.1:
-  version "2.79.1"
-  resolved "https://registry.npmjs.org/rollup/-/rollup-2.79.1.tgz"
-  integrity sha512-uKxbd0IhMZOhjAiD5oAFp7BqvkA4Dv47qpOCtaNvng4HBwdbWtdOh8f5nZNuk2rp51PMGk3bzfWu5oayNEuYnw==
+rollup@^2.79.2:
+  version "2.79.2"
+  resolved "https://registry.npmjs.org/rollup/-/rollup-2.79.2.tgz"
+  integrity sha512-7d2ea2a923d90ecdddaffcbb39deb2e6785af1d5b56276e0b6cca8b4256fa0518a6c4446fbe095445bf599ec860c4d52348b5003c06b9c2c3b49c7408512775d
   optionalDependencies:
     fsevents "~2.3.2"
 
