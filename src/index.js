@@ -52,7 +52,7 @@ function MyForm() {
 
   return (
     <div className="container">
-    <h2>Simple wellable calculator v0.2. Input your activity, see the wellable points.</h2>
+    <h2>Simple wellable calculator v0.3. Input your activity, see the wellable points.</h2>
     <form onSubmit={handleSubmit}>
       <p>
       <label>Number of miles run:
@@ -125,7 +125,7 @@ function MyForm() {
     </form>
     <p>
     Wellable points: {JSON.stringify(points)}<br>points over 1500: {JSON.stringify(overspill)} </br>
-    <br>landsteps: ${JSON.stringify(landsteps)</br>
+    <br>landsteps: ${JSON.stringify(landsteps)}</br>
       </p>
     </div>
   )
