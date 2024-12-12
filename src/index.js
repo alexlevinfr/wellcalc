@@ -32,9 +32,9 @@ function MyForm() {
     return points;
   }
 
-  const points=calcPoints(inputs);
+  const points=Math.floor(calcPoints(inputs));
   const overspill= points >1500 ?points-1500 :0;
-  const landsteps = parseFloat(inputs.runmiles)+parseFloat(inputs.walkmiles)+(parseFloat(inputs.runkm)+parseFloat(inputs.walkkm))*5/8*2000;
+  const landsteps = Math.floor((parseFloat(inputs.runmiles)+parseFloat(inputs.walkmiles)+((parseFloat(inputs.runkm)+parseFloat(inputs.walkkm))*5/8))*2000);
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -124,8 +124,8 @@ function MyForm() {
         <input type="submit"/>
     </form>
     <p>
-    Wellable points: {JSON.stringify(points)}<br>points over 1500: {JSON.stringify(overspill)} </br>
-    <br>landsteps: ${JSON.stringify(landsteps)}</br>
+    Wellable points: {JSON.stringify(points)}<br />points over 1500: {JSON.stringify(overspill)}
+    <br />landsteps: {JSON.stringify(landsteps)}
       </p>
     </div>
   )
