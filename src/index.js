@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import ReactDOM from 'react-dom/client';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+import { Modal } from './Modal';
 
 function MyForm() {
   const [inputs, setInputs] = useState({
@@ -13,10 +16,10 @@ function MyForm() {
                                           steps:'0'
                                         });
 
+
   function calcPoints(inputs) {
     var landmiles=parseFloat(inputs.runmiles);
     landmiles +=parseFloat(inputs.runkm)*5/8;
-
     landmiles +=parseFloat(inputs.walkmiles);
     landmiles +=parseFloat(inputs.walkkm)*5/8;
     var points =parseFloat(inputs.cyclemiles)*30;
@@ -43,12 +46,14 @@ function MyForm() {
   }
 
 
+
+
   const handleSubmit = e => {
     e.preventDefault();
       console.log("Submitted the wellable form. No one is listening");
-
       alert("daily wellables:"+points+", overspill:"+overspill);
   };
+
 
   return (
     <div className="container">
@@ -127,6 +132,7 @@ function MyForm() {
     Wellable points: {JSON.stringify(points)}<br />points over 1500: {JSON.stringify(overspill)}
     <br />landsteps: {JSON.stringify(landsteps)}
       </p>
+    <Modal />
     </div>
   )
 }
