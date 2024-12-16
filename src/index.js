@@ -15,6 +15,8 @@ function MyForm() {
                                           steps:'0'
                                         });
 
+  
+
 
   function calcPoints(inputs) {
     var landmiles=parseFloat(inputs.runmiles);
@@ -37,6 +39,7 @@ function MyForm() {
   const points=Math.floor(calcPoints(inputs));
   const overspill= points >1500 ?points-1500 :0;
   const landsteps = Math.floor((parseFloat(inputs.runmiles)+parseFloat(inputs.walkmiles)+((parseFloat(inputs.runkm)+parseFloat(inputs.walkkm))*5/8))*2000);
+  //const activeJsons =[];
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -69,7 +72,7 @@ function MyForm() {
       </label></p>
       <p><label>Number of km run:
       <input
-        type="text"
+        type="number"
         name="runkm"
         value={inputs.runkm || ""}
         onChange={handleChange}
@@ -78,7 +81,7 @@ function MyForm() {
       </p>
       <p><label>Number of miles walked:
       <input
-        type="text"
+        type="number"
         name="walkmiles"
         value={inputs.walkmiles || ""}
         onChange={handleChange}
@@ -86,7 +89,7 @@ function MyForm() {
       </label></p>
       <p><label>Number of km walked:
       <input
-        type="text"
+        type="number"
         name="walkkm"
         value={inputs.walkkm || ""}
       />
@@ -94,7 +97,7 @@ function MyForm() {
       </p>
       <p><label>Number of miles cycled:
       <input
-        type="text"
+        type="number"
         name="cyclemiles"
         value={inputs.cyclemiles || ""}
         onChange={handleChange}
@@ -102,7 +105,7 @@ function MyForm() {
       </label></p>
       <p><label>Number of km cycled:
       <input
-        type="text"
+        type="number"
         name="cyclekm"
         value={inputs.cyclekm || ""}
         onChange={handleChange}
@@ -110,7 +113,7 @@ function MyForm() {
       </label>
       </p><p><label>Duration of other activity (mins):
       <input
-        type="text"
+        type="number"
         name="activitymins"
         value={inputs.activitymins || ""}
         onChange={handleChange}

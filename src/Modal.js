@@ -18,7 +18,8 @@ export function Modal() {
         cyclemiles:'0.0',
         activitymins:'0',
         steps:'0',
-        type:'Steps'
+        type:'Steps',
+        unit:'miles'
       });
 
     const handleActivitiesChange = (event) => {
@@ -47,12 +48,32 @@ export function Modal() {
                                 <option value="Steps">Walk steps</option>
                                 <option value="Cycle">Cycle distance</option>
                                 <option value="Activitymins">Activity minutes</option>
+                                </select></label>
+                                }
+                                {
+                                <label>unit<select value={activities.unit} onChange={handleActivitiesChange} name="unit">
+                                <option value="miles">Miles</option>
+                                <option value="km">Kms</option>
                                 </select></label>}
                                 {<form onSubmit={handleActivitiesSubmit}>
                                 {activities.type === "Steps" ? 
                                 <label>number of steps:<input type="number" name="steps" value={activities.steps} onChange={handleActivitiesChange} />
+                                </label> : null}
+                                {activities.type === "Run" ? 
+                                <label>Run:<input type="number" name={activities.unit==="miles"? "runmiles": "runkm"} value={activities.unit==="miles" ? activities.runmiles : activities.runkm} onChange={handleActivitiesChange} />
+                                </label> : null}
+                                {activities.type === "Walkd" ? 
+                                <label>Walk distance:<input type="number" name={activities.unit==="miles"? "walkmiles": "walkkm"} value={activities.unit === "miles" ? activities.walkmiles : activities.walkkm} onChange={handleActivitiesChange} />
+                                </label> : null}
+                                {activities.type === "Cycle"  ? 
+                                <label>Cycle distance:<input type="number" name={activities.unit==="miles"? "cyclemiles": "cyclekm"} value={activities.unit === "miles" ? activities.cyclemiles : activities.cyclekm} onChange={handleActivitiesChange} />
                                 </label> : null
                                 }
+                                {activities.type === "Activitymins"  ? 
+                                <label>Activity minutes:<input type="number" name="activitymins" value={activities.activitymins} onChange={handleActivitiesChange} />
+                                </label> : null
+                                }
+
                                 <input type="submit" />
                                 </form> }
                             </div>
