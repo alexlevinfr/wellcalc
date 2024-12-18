@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom/client';
 import 'reactjs-popup/dist/index.css';
 import { Modal } from './Modal';
 
+
+
+
 function MyForm() {
   const [inputs, setInputs] = useState({
                                           runkm:'0.0',
@@ -39,7 +42,7 @@ function MyForm() {
   const points=Math.floor(calcPoints(inputs));
   const overspill= points >1500 ?points-1500 :0;
   const landsteps = Math.floor((parseFloat(inputs.runmiles)+parseFloat(inputs.walkmiles)+((parseFloat(inputs.runkm)+parseFloat(inputs.walkkm))*5/8))*2000);
-  //const activeJsons =[];
+  
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -47,13 +50,14 @@ function MyForm() {
     setInputs(values => ({...values, [name]: value}))
   }
 
+  
 
 
 
   const handleSubmit = e => {
     e.preventDefault();
       console.log("Submitted the wellable form. No one is listening");
-      alert("daily wellables:"+points+", overspill:"+overspill);
+      alert("daily wellables:"+points+", overspill:"+overspill, JSON.stringify(Modal.activeJsons));
   };
 
 
@@ -135,6 +139,9 @@ function MyForm() {
     <br />landsteps: {JSON.stringify(landsteps)}
       </p>
     <Modal />
+    Activity log
+    <p />
+    {JSON.stringify(Modal.activeJsons)}
     </div>
   )
 }
