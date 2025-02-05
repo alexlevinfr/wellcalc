@@ -1,0 +1,16 @@
+html {
+    text-align: center;
+    background-color: #FFA09B;
+}
+
+form {
+    background-color: #FFE6C9;
+}
+
+input {
+   background-color: #FFC785; 
+}
+
+.results {
+    background-color: #FCC6FF;
+}
