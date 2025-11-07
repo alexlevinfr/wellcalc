@@ -63,7 +63,7 @@ function MyForm() {
 
   return (
     <div className="container">
-    <h2>Simple wellable calculator v0.4. Input your activity, see the wellable points.</h2>
+    <h2>Simple wellable calculator v0.4.1. Input your activity, see the wellable points.</h2>
     <form onSubmit={handleSubmit}>
       <p>
       <label>Number of miles run:
@@ -96,6 +96,7 @@ function MyForm() {
         type="number"
         name="walkkm"
         value={inputs.walkkm || ""}
+        onChange={handleChange}
       />
       </label>
       </p>
