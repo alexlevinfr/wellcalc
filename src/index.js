@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import ReactDOM from 'react-dom/client';
+import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { Modal } from './Modal';
 
@@ -17,8 +18,6 @@ function MyForm() {
                                           activitymins:'0',
                                           steps:'0'
                                         });
-
-  
 
 
   function calcPoints(inputs) {
@@ -60,10 +59,24 @@ function MyForm() {
       alert("daily wellables:"+points+", overspill:"+overspill, JSON.stringify(Modal.activeJsons));
   };
 
+  const [activeJsons, setActiveJsons] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // called from the modal on submit
+  const addActivityToLog = useCallback((activities) => {
+        setActiveJsons(prevArray => [
+          ...prevArray, activities
+        ]);
+        console.log(JSON.stringify(activeJsons));
+        setIsModalOpen(false)
+  }, [activeJsons]);
+  
+  
+
 
   return (
     <div className="container">
-    <h2>Simple wellable calculator v0.4.1. Input your activity, see the wellable points.</h2>
+    <h2>Simple wellable calculator v0.4.2. Input your activity, see the wellable points.</h2>
     <form onSubmit={handleSubmit}>
       <p>
       <label>Number of miles run:
@@ -139,10 +152,17 @@ function MyForm() {
     Wellable points: {JSON.stringify(points)}<br />points over 1500: {JSON.stringify(overspill)}
     <br />landsteps: {JSON.stringify(landsteps)}
       </p>
-    <Modal />
+    <button onClick={() =>setIsModalOpen(true)}> Click to open modal </button>
+
+    <Popup open={isModalOpen} onClose={() =>setIsModalOpen(false)}modal>
+      <Modal onSubmit={addActivityToLog} onClose={() => setIsModalOpen(false)}
+      />
+    </Popup>
+
     Activity log
     <p />
-    {JSON.stringify(Modal.activeJsons)}
+
+    {JSON.stringify(activeJsons)}
     </div>
   )
 }
