@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import React from 'react';
-import Popup from 'reactjs-popup';
+
 import 'reactjs-popup/dist/index.css';
 
 export function Modal({onSubmit, onClose}) {
