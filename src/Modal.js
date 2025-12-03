@@ -3,7 +3,7 @@ import React from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
-export function Modal() {
+export function Modal({onSubmit, onClose}) {
     /*const [selectedActivity, setSelectedActivity] = useState('Steps');
     const handleActivityChange = (event) => {
         setSelectedActivity(event.target.value);
@@ -81,19 +81,18 @@ export function Modal() {
         return <option value={props.brand}>{props.brand}</option>;
     }
 
-    const [activeJsons, setActiveJsons] = useState({myArray:[]});
 
     /*const handleActiveJsonsChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
         setActiveJsons(activeJsons => ({...activeJsons.m, [name]: value}));
     }*/
-    
-    function addActivityToLog(activities) {
+    // move this to main.
+    /*function addActivityToLog(activities) {
         setActiveJsons(activeJsons => ({
             myArray:[...activeJsons.myArray, {"name": activities}]}));
         console.log(JSON.stringify(activeJsons));
-      }
+    }*/
     
       function getLabelName(str) {
         if (str === "steps") {
@@ -108,48 +107,42 @@ export function Modal() {
       }
 
     const handleActivitiesSubmit = e => {
-        var activityjson=JSON.stringify(activities);
-        addActivityToLog(activities);
         e.preventDefault();
+        var activityjson=JSON.stringify(activities);
+        onSubmit(activities);
           console.log("Submitted the activities form.",activityjson);
 
       }
 
-      return (<Popup trigger = { <button> Click to open modal </button>}
-                modal nested>
-                    {close => (
-                        <div className='modal'>
-                            <div className='content'>
-                            Record a new activity.
-                                <label>date<input type="date" name="date" value={activities.date} onChange={handleActivitiesChange}></input></label><br />
-                                {<label>type<select value={activities.type} onChange={handleActivitiesChange} name="type">
-                                {activity_names.map((option) => <Opts brand={option} />)
-                                    };</select></label>
-                                }
-                                {<label>unit<select value={activities.unit} onChange={handleActivitiesChange} name="unit">
-                                {unit_types.map((option) => <Opts brand={option} />)
-                                    };</select></label>
-                                }
-                                {<form onSubmit={handleActivitiesSubmit}>
-                                {
-                                <label>{getLabelName(activities.unit)}<input type="number" name="quantity" value={activities.quantity} onChange={handleActivitiesChange} />
-                                </label>
-                                }
-
-                                <input type="submit" />
-                                </form> }
-
-                            </div>
-
-                            <div>
-                                <button onClick=
-                                    {() => close()}>
-                                        Close modal
-                                </button>
-                            </div>
-                        </div>
-                    )
+return (<div className='modal-content'>
+            Record a new activity.
+                <label>date<input type="date" name="date" value={activities.date} onChange={handleActivitiesChange}></input></label><br />
+                {<label>type<select value={activities.type} onChange={handleActivitiesChange} name="type">
+                {activity_names.map((option) => <Opts brand={option} />)
+                    };</select></label>
                 }
-            </Popup>
-    )
+                {<label>unit<select value={activities.unit} onChange={handleActivitiesChange} name="unit">
+                {unit_types.map((option) => <Opts brand={option} />)
+                    };</select></label>
+                }
+                {<form onSubmit={handleActivitiesSubmit}>
+                {
+                <label>{getLabelName(activities.unit)}<input type="number" name="quantity" value={activities.quantity} onChange={handleActivitiesChange} />
+                </label>
+                }
+
+                <input type="submit" />
+                </form> }
+
+
+            <div>
+                <button onClick=
+                    {onClose}>
+                        Close modal
+                </button>
+            </div>
+        </div>
+
+    );
+                
 }
