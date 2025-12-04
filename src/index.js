@@ -62,11 +62,36 @@ function MyForm() {
   const [activeJsons, setActiveJsons] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+
+  /*const [activities, setActivities] = useState({
+          date:new Date().toJSON().slice(0, 10),
+          type:'Walking (Steps)',
+          unit:'steps',
+          quantity:0.0,
+        });*/
+
   // called from the modal on submit
   const addActivityToLog = useCallback((activities) => {
         setActiveJsons(prevArray => [
           ...prevArray, activities
         ]);
+        if(activities.type === 'Walking (Steps)') {
+          setInputs(values => ({...values, steps: parseInt(values.steps) + parseInt(activities.quantity)}))
+        } else if (activities.type === 'Running (Distance)' && activities.unit === 'miles') {
+          setInputs(values => ({...values, runmiles: parseFloat(values.runmiles) + parseFloat(activities.quantity)}))
+        }  else if (activities.type === 'Running (Distance)' && activities.unit === 'km') {
+          setInputs(values => ({...values, runkm: parseFloat(values.runkm) + parseFloat(activities.quantity)}))
+        }  else if (activities.type === 'Walking (Distance)' && activities.unit === 'miles') {
+          setInputs(values => ({...values, walkmiles: parseFloat(values.walkmiles) + parseFloat(activities.quantity)}))
+        }  else if (activities.type === 'Walking (Distance)' && activities.unit === 'km') {
+          setInputs(values => ({...values, walkkm: parseFloat(values.walkkm) + parseFloat(activities.quantity)}))
+        }  else if (activities.type === 'Cycling (Distance)' && activities.unit === 'miles') {
+          setInputs(values => ({...values, cyclemiles: parseFloat(values.cyclemiles) + parseFloat(activities.quantity)}))
+        }  else if (activities.type === 'Cycling (Distance)' && activities.unit === 'km') {
+          setInputs(values => ({...values, cyclekm: parseFloat(values.cyclekm) + parseFloat(activities.quantity)}))
+        }  else if (activities.unit === 'time') {
+          setInputs(values => ({...values, activitymins: parseInt(values.activitymins) + parseInt(activities.quantity)}))
+        }
         console.log(JSON.stringify(activeJsons));
         setIsModalOpen(false)
   }, [activeJsons]);
@@ -76,7 +101,7 @@ function MyForm() {
 
   return (
     <div className="container">
-    <h2>Simple wellable calculator v0.4.2. Input your activity, see the wellable points.</h2>
+    <h2>Simple wellable calculator v0.4.3. Input your activity, see the wellable points.</h2>
     <form onSubmit={handleSubmit}>
       <p>
       <label>Number of miles run:
