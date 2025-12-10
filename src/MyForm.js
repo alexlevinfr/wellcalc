@@ -1,5 +1,4 @@
-import { useState, useCallback } from 'react';
-import ReactDOM from 'react-dom/client';
+import React, { useState, useCallback } from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { Modal } from './Modal';
