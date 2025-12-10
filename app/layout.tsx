@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next'
+import React from 'react'
 
 export const metadata: Metadata = {
  title: 'Wellable-style Calculator',

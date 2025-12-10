@@ -1,9 +1,6 @@
-
-
-
-import { useState } from 'react';
-import React from 'react';
+import React, { useState } from 'react';
 import 'reactjs-popup/dist/index.css';
+
 
 export function Modal({onSubmit, onClose}) {
     /*const [selectedActivity, setSelectedActivity] = useState('Steps');
@@ -77,9 +74,6 @@ export function Modal({onSubmit, onClose}) {
         const value = event.target.value;
         console.log(name,value);
         setActivities(activities => ({...activities, [name]: value}));
-        if(name='type' && name != 'Walking (Distance)') {
-           setActivities(activities=> ({...activities, [unit]: 'time' }));
-        }
     }
 
     function Opts(props) {
